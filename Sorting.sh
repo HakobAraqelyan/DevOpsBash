@@ -1,51 +1,49 @@
 #!/bin/bash
 
+
 defaultPath="./"
-path="${$1: -$defaultPath}"
+files=$(ls $1 || $defaultPath)
 
-echo "D: $path"
-echo "0: $1"
 
-# files=$(ls $path)
 
-# echo $files
+echo $files
 
-# for file in $files; do
-#     if [ -d "$path/$file" ]; then
+for file in $files; do
+    if [ -d "$1$file" ]; then
 
-#         echo "$path/$file is a directory."
+        echo "$1$file is a directory."
     
-#     elif [ -f "$path/$file" ]; then
-#         echo "$path/$file is a file."
+    elif [ -f "$1$file" ]; then
+        echo "$1$file is a file."
     
-#         if [[ $path/$file == *.sh ]]; then
+        if [[ $1$file == *.sh ]]; then
     
-#             mkdir -p "$path/Scripts/"
-#             mv "$path/$file" "$path/Scripts/"
-#             echo "$path/$file is a shell script."
+            mkdir -p "$1Scripts/"
+            mv "$1$file" "$1Scripts/"
+            echo "$1$file is a shell script."
     
-#         elif [[ $path/$file == *.txt ]] || [[ $path/$file == *.md ]]; then
+        elif [[ $1$file == *.txt ]] || [[ $1$file == *.md ]]; then
     
-#             mkdir -p "$path/Documents/"
-#             mv "$path/$file" "$path/Documents/"
-#             echo "$path/$file is a text file."
+            mkdir -p "$1Documents/"
+            mv "$1$file" "$1Documents/"
+            echo "$1$file is a text file."
     
-#         elif [[ $path/$file == *.jpg ]] || [[ $path/$file == *.png ]]; then
+        elif [[ $1$file == *.jpg ]] || [[ $1$file == *.png ]]; then
     
-#             mkdir -p "$path/Images/"
-#             mv "$path/$file" "$path/Images/"
-#             echo "$path/$file is an image file."
+            mkdir -p "$1Images/"
+            mv "$1$file" "$1Images/"
+            echo "$1$file is an image file."
     
-#         else
+        else
     
-#             echo "$path/$file is of an unknown file type."
+            echo "$1$file is of an unknown file type."
     
-#         fi
+        fi
     
-#     else
+    else
     
-#         echo "$path/$file is neither a file nor a directory."
+        echo "$1$file is neither a file nor a directory."
     
-#     fi
+    fi
 
-# done
+done
